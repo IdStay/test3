@@ -18,8 +18,9 @@ if (empty($myrow2['id']))
    }
 }
 else {
+print("adasdasdasd"); }
 //Проверяем, зарегистрирован ли вошедший
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вход на эту страницу разрешен только администратору и редакторам!</body></html>"); }
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вход на эту страницу разрешен только администратору и редакторам!</body></html>"); }
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">

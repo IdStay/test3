@@ -11,12 +11,15 @@ if (isset($_POST['email'])) { $email = $_POST['email']; if ($email == '') { unse
 if (empty($login) or empty($password)or empty($code) or empty($email)) //если пользователь не ввел логин или пароль, то выдаем ошибку и останавливаем скрипт
 {
 
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели не всю информацию, вернитесь назад и заполните все поля!</body></html>");//останавливаем выполнение сценариев
+echo("Вы ввели не всю информацию!");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели не всю информацию, вернитесь назад и заполните все поля!</body></html>");//останавливаем выполнение сценариев
 
 
 }
 if (!preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $email)) //проверка е-mail адреса регулярными выражениями на корректность
-{exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Неверно введен е-mail!</body></html>");
+{
+    echo("Неверно введен е-mail!");
+    //exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Неверно введен е-mail!</body></html>");
 
 }
 
@@ -68,7 +71,8 @@ else
 // после сравнения проверяем, пускать ли пользователя дальше или, он сделал ошибку, и остановить скрипт
 if (!chec_code($_POST['code']))
 {
-    exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели неверно код с картинки.</body></html>"); //останавливаем выполнение сценариев
+echo("Вы ввели неверно код с картинки.");
+    //exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели неверно код с картинки.</body></html>"); //останавливаем выполнение сценариев
 }
 
 
@@ -88,13 +92,14 @@ $password = trim($password);
 
 //добавляем проверку на длину логина и пароля
 if (strlen($login) < 3 or strlen($login) > 15) {
-
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Логин должен состоять не менее чем из 3 символов и не более чем из 15.</body></html>"); //останавливаем выполнение сценариев
+print("Логин должен состоять не менее чем из 3 символов и не более чем из 15.");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Логин должен состоять не менее чем из 3 символов и не более чем из 15.</body></html>"); //останавливаем выполнение сценариев
 
 }
 if (strlen($password) < 3 or strlen($password) > 15) {
 
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Пароль должен состоять не менее чем из 3 символов и не более чем из 15.</body></html>"); //останавливаем выполнение сценариев
+echo("Пароль должен состоять не менее чем из 3 символов и не более чем из 15.");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Пароль должен состоять не менее чем из 3 символов и не более чем из 15.</body></html>"); //останавливаем выполнение сценариев
 
     return $login;
 

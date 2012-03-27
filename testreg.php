@@ -7,7 +7,8 @@ if (isset($_POST['password'])) { $password=$_POST['password']; if ($password =='
 
 if (empty($login) or empty($password)) //если пользователь не ввел логин или пароль, то выдаем ошибку и останавливаем скрипт
 {
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели не всю информацию, вернитесь назад и заполните все поля!</body></html>"); //останавливаем выполнение сценариев и делаем переадресацию назад рефреш
+echo("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы ввели не всю информацию, вернитесь назад и заполните все поля!</body></html>"); //останавливаем выполнение сценариев и делаем переадресацию назад рефреш
 }
 //если логин и пароль введены,то обрабатываем их, чтобы теги и скрипты не работали, мало ли что люди могут ввести
 $login = stripslashes($login);
@@ -36,7 +37,8 @@ $result = mysql_query("SELECT col FROM oshibka WHERE ip='$ip'",$db);// извлекаем
 $myrow = mysql_fetch_array($result);
 
 if ($myrow['col'] > 2) {
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы набрали логин или пароль неверно 3 раза. Подождите 15 минут до следующей попытки.</body></html>"); //останавливаем выполнение сценариев
+echo("Вы набрали логин или пароль неверно 3 раза. Подождите 15 минут до следующей попытки.");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Вы набрали логин или пароль неверно 3 раза. Подождите 15 минут до следующей попытки.</body></html>"); //останавливаем выполнение сценариев
 
 
 }
@@ -71,8 +73,8 @@ else {
 //если за последние 15 минут ошибок не было, то вставляем новую запись в таблицу "oshibka"
 mysql_query ("INSERT INTO oshibka (ip,date,col) VALUES ('$ip',NOW(),'1')");
 }
-
-exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Извините, введённый вами логин или пароль неверный.</body></html>");//останавливаем выполнение сценариев
+echo("Извините, введённый вами логин или пароль неверный.");
+//exit ("<html><head><meta http-equiv='Refresh' content='2; URL=$_SERVER[HTTP_REFERER]'></head><body>Извините, введённый вами логин или пароль неверный.</body></html>");//останавливаем выполнение сценариев
 
 }
 else {
